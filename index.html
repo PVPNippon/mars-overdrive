@@ -20,11 +20,36 @@
     <!-- Navigation Bar -->
     <nav class="bg-gray-800 fixed top-0 w-full shadow-lg z-50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold tracking-wide hover:text-gray-300 transition">Mars Overdrive</a>
-            <div class="space-x-6">
-                <a href="privacy.html" class="hover:text-gray-400 transition">Privacy Policy</a>
-                <a href="terms.html" class="hover:text-gray-400 transition">Terms of Service</a>
-            </div>
+            <a href="index.html" class="text-xl font-bold tracking-wide hover:text-gray-300 transition">
+                Mars Overdrive
+            </a>
+            <div class="flex space-x-6">
+              <!-- English Hover -->
+              <div class="relative inline-block">
+                  <div class="group inline-block cursor-pointer font-medium text-white hover:text-gray-400 transition">
+                      Privacy Policy
+                      <div class="absolute left-0 mt-2 w-48 bg-[#f9f9f9] shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity border border-white">
+                          <div class="p-2 hover:bg-[#EDE0D4]">
+                              <a href="privacy.html" class="block text-sm text-gray-900 hover:underline">English</a>
+                              <a href="privacy_jp.html" class="block text-sm text-gray-900 hover:underline">日本語</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          
+              <!-- Japanese Hover -->
+              <div class="relative inline-block">
+                  <div class="group inline-block cursor-pointer font-medium text-white hover:text-gray-400 transition">
+                      Terms of Service
+                      <div class="absolute left-0 mt-2 w-48 bg-[#f9f9f9] shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity border border-white">
+                          <div class="p-2 hover:bg-[#EDE0D4]">
+                              <a href="terms.html" class="block text-sm text-gray-900 hover:underline">English</a>
+                              <a href="terms_jp.html" class="block text-sm text-gray-900 hover:underline">日本語</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
         </div>
     </nav>
 
