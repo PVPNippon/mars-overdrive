@@ -9,10 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Playwrite+AU+SA:wght@100..400&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gradient-to-b from-[#3b0d0d] via-[#601010] to-[#8b2c10] text-white">
+<body class="bg-[#3a0d61] text-white">
+    <!-- Stars Background -->
+    <div class="stars"></div>
     
     <!-- Navbar -->
-    <nav class="absolute top-0 w-full flex justify-between items-center p-6 bg-opacity-10">
+    <nav class="absolute top-0 w-full flex justify-between items-center z-50 p-6 bg-opacity-10">
         <div class="text-xl font-bold">LOGO</div>
         <ul class="flex space-x-6">
             <li><a href="#" class="hover:text-orange-400">Home</a></li>
@@ -25,10 +27,10 @@
     <section class="relative h-screen flex flex-col md:flex-row items-center justify-between px-8 md:px-12 text-left">
     
         <!-- Background (UNCHANGED) -->
-        <div style="background-image: url('images/transparent-bg.png'); background-size: 100% auto; background-position: top; height: 50%;" class="absolute bottom-0 left-0 w-full z-40 bg-cover"></div>
+        <div style="background-image: url('images/transparent-bg.png'); background-size: 100% auto; background-position: top; height: 50%;" class="absolute bottom-0 left-0 w-full  bg-cover"></div>
         
         <!-- Flex Container (UNCHANGED) -->
-        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-4xl mx-auto">
+        <div class="relative z-50 flex flex-col md:flex-row items-center justify-between w-full max-w-4xl mx-auto">
             
             <!-- Rocket Image (UNCHANGED) -->
             <div class="mt-8 md:mt-0">
@@ -81,28 +83,15 @@
             </div>
         </div>
     </section>
+    <!-- Background Landing Area -->
+<div id="landing-zone" class="absolute bottom-0 left-0 w-full h-[50vh] bg-cover z-40" style="background-image: url('images/transparent-bg.png'); background-size: 100% auto; background-position: top;"></div>
 
-    <script>
-        document.addEventListener("scroll", function () {
-            let scrollPosition = window.scrollY;
-            let viewportHeight = window.innerHeight;
-            let textBlocks = document.querySelectorAll(".text-block");
+<!-- Mini Spaceship (Updated with Animation) -->
+<div id="mini-ship">
+    <img src="images/spaceship.png" alt="Mini Rocket" class="rotate-180 w-24 md:w-32">
+</div>
 
-            textBlocks.forEach((block) => {
-                let blockTop = block.getBoundingClientRect().top;
-                let triggerStart = viewportHeight * 0.65; // Start fading in earlier
-                let triggerEnd = viewportHeight * 0.35; // Keep text visible longer
-
-                if (blockTop < triggerStart && blockTop > triggerEnd) {
-                    let opacity = 1 - Math.abs(blockTop - viewportHeight / 2) / (viewportHeight * 0.3);
-                    block.style.opacity = Math.max(0, Math.min(1, opacity));
-                    block.style.transform = `translateY(${(1 - opacity) * 50}px)`;
-                } else {
-                    block.style.opacity = 0;
-                }
-            });
-        });
-    </script>
+<script src="script.js"></script>
 
 </body>
 </html>
