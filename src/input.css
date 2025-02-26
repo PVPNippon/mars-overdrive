@@ -9,7 +9,7 @@ body {
         #mini-ship {
             position: fixed;
             bottom: 40%;
-            left: 50%;
+            left: calc(50% - 45px); /* Adjust based on text alignment */
             transform: translateX(-50%);
             width: 100px;
             transition: transform 0.3s ease-in-out;
@@ -65,4 +65,26 @@ body {
 .glowing {
     animation: neonGlow 0.5s infinite alternate;
     color: #ff00ff; /* Purple neon */
+}
+
+#asteroid-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.asteroid {
+    position: absolute;
+    opacity: 0.8;
+    animation: rotate linear infinite;
+}
+
+/* Rotation animation (each asteroid rotates at different speeds) */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }

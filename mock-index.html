@@ -12,6 +12,7 @@
 <body class="bg-[#3a0d61] text-white">
     <!-- Stars Background -->
     <div class="stars"></div>
+    <div id="asteroid-container"></div>
     
     <!-- Navbar -->
     <nav class="absolute top-0 w-full flex justify-between items-center z-50 p-6 bg-opacity-10">
@@ -60,38 +61,44 @@
 
     <!-- Scrolling Content with Parallax Text -->
     <section class="relative h-[400vh] flex flex-col items-center justify-start overflow-hidden">
-        <div class="w-full max-w-5xl mt-48">
-            <div class="text-block text-right">
-                <p class="bg-gray-900 bg-opacity-70 p-6 rounded-lg max-w-md ml-auto shadow-lg">
+        <div class="w-full flex justify-center"> 
+            <!-- Centered container -->
+            <div class="mt-48 px-6 grid grid-cols-2 gap-x-40 gap-y-[40vh] place-items-center"> 
+                <!-- Right-aligned text -->
+                <div class="text-block text-lg text-left bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac urna vel metus varius luctus.
-                </p>
-            </div>
-            <div class="text-block text-left mt-[40vh]">
-                <p class="bg-gray-900 bg-opacity-70 p-6 rounded-lg max-w-md shadow-lg">
+                </div>
+                <div></div> <!-- Empty block for spacing -->
+        
+                <div></div> <!-- Empty block for spacing -->
+                <!-- Left-aligned text -->
+                <div class="text-block text-lg text-right bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
                     Nullam viverra lorem sed justo pretium, eget feugiat dolor pharetra.
-                </p>
-            </div>
-            <div class="text-block text-right mt-[40vh]">
-                <p class="bg-gray-900 bg-opacity-70 p-6 rounded-lg max-w-md ml-auto shadow-lg">
+                </div>
+    
+                <!-- Right-aligned text -->
+                <div class="text-block text-lg text-left bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
                     Fusce interdum magna nec tellus pharetra, ac faucibus tortor consectetur.
-                </p>
-            </div>
-            <div class="text-block text-left mt-[40vh]">
-                <p class="bg-gray-900 bg-opacity-70 p-6 rounded-lg max-w-md shadow-lg">
+                </div>
+                <div></div> <!-- Empty block for spacing -->
+    
+                <div></div> <!-- Empty block for spacing -->
+                <!-- Left-aligned text -->
+                <div class="text-block text-lg text-right bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
                     Sed tristique velit id ligula ultricies, ac consequat mi interdum.
-                </p>
+                </div>
             </div>
         </div>
     </section>
-    <!-- Background Landing Area -->
-<div id="landing-zone" class="absolute bottom-0 left-0 w-full h-[50vh] bg-cover z-40" style="background-image: url('images/transparent-bg.png'); background-size: 100% auto; background-position: top;"></div>
+
 
 <!-- Mini Spaceship (Updated with Animation) -->
 <div id="mini-ship">
     <img src="images/spaceship.png" alt="Mini Rocket" class="rotate-180 w-24 md:w-32">
 </div>
 
-<script src="script.js"></script>
+<script src="js/script.js"></script>
+<script src="js/asteroids.js"></script>
 
 </body>
 </html>
