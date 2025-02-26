@@ -66,6 +66,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
         starContainer.appendChild(star);
     }
+
+    const miniShip = document.getElementById("mini-ship");
+    const marsSection = document.querySelector(".mars-overdrive"); // Add class to section
+
+    function checkVisibility() {
+        const sectionRect = marsSection.getBoundingClientRect();
+
+        if (sectionRect.bottom < window.innerHeight * 0.5) {
+            // 🚀 If scrolled past section, make the mini-ship visible
+            miniShip.style.opacity = "1";
+        } else {
+            // 🌑 Hide mini-ship when inside section
+            miniShip.style.opacity = "0";
+        }
+    }
+
+    // Run function on scroll
+    window.addEventListener("scroll", checkVisibility);
+
+    // Run once on load in case user starts below section
+    checkVisibility();
 });
 
 function scrambleLetters(element) {
