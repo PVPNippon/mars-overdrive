@@ -5,3 +5,21 @@
 body {
     font-family: 'Orbitron', sans-serif;
 }
+        /* Keep spaceship fixed at center */
+        #mini-ship {
+            position: fixed;
+            bottom: 40%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            transition: transform 0.3s ease-in-out;
+            z-index: -20;
+        }
+
+
+        /* Text styling */
+        .text-block {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }

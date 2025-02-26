@@ -21,23 +21,21 @@
         </ul>
     </nav>
     
-    <!-- Hero Section -->
+    <!-- Hero Section (UNCHANGED) -->
     <section class="relative h-screen flex flex-col md:flex-row items-center justify-between px-8 md:px-12 text-left">
     
-        <!-- Background -->
-        <div style="background-image: url('images/transparent-bg.png'); background-size: 100% auto; background-position: top; height: 50%;" class="absolute bottom-0 left-0 w-full -z-40 bg-cover"></div>
+        <!-- Background (UNCHANGED) -->
+        <div style="background-image: url('images/transparent-bg.png'); background-size: 100% auto; background-position: top; height: 50%;" class="absolute bottom-0 left-0 w-full z-40 bg-cover"></div>
         
-        <!-- Flex Container -->
+        <!-- Flex Container (UNCHANGED) -->
         <div class="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-4xl mx-auto">
             
-        
-    
-            <!-- Rocket Image (Right Side) -->
+            <!-- Rocket Image (UNCHANGED) -->
             <div class="mt-8 md:mt-0">
                 <img src="images/spaceship.png" alt="Rocket" class="w-60 md:w-64 rotate-45">
             </div>
 
-            <!-- Content (Text on Left) -->
+            <!-- Content (UNCHANGED) -->
             <div class="flex flex-col items-start text-white max-w-lg text-center md:text-left">
                 <h1 class="text-4xl md:text-6xl font-bold">MARS OVERDRIVE</h1>
                 <p class="text-lg md:text-xl text-orange-300">Landing Page for a Space Adventure</p>
@@ -48,9 +46,63 @@
                     Begin Your Mission
                 </a>
             </div>
-    
         </div>
-    
     </section>
+
+
+
+       <!-- Mini Spaceship (FIXED) -->
+       <div id="mini-ship">
+        <img src="images/spaceship.png" alt="Mini Rocket" class="rotate-180 w-24 md:w-32">
+    </div>
+
+    <!-- Scrolling Content with Parallax Text -->
+    <section class="relative h-[400vh] flex flex-col items-center justify-start overflow-hidden">
+        <div class="w-full max-w-5xl mt-48">
+            <div class="text-block text-right">
+                <p class="bg-gray-900 bg-opacity-70 p-6 rounded-lg max-w-md ml-auto shadow-lg">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac urna vel metus varius luctus.
+                </p>
+            </div>
+            <div class="text-block text-left mt-[40vh]">
+                <p class="bg-gray-900 bg-opacity-70 p-6 rounded-lg max-w-md shadow-lg">
+                    Nullam viverra lorem sed justo pretium, eget feugiat dolor pharetra.
+                </p>
+            </div>
+            <div class="text-block text-right mt-[40vh]">
+                <p class="bg-gray-900 bg-opacity-70 p-6 rounded-lg max-w-md ml-auto shadow-lg">
+                    Fusce interdum magna nec tellus pharetra, ac faucibus tortor consectetur.
+                </p>
+            </div>
+            <div class="text-block text-left mt-[40vh]">
+                <p class="bg-gray-900 bg-opacity-70 p-6 rounded-lg max-w-md shadow-lg">
+                    Sed tristique velit id ligula ultricies, ac consequat mi interdum.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("scroll", function () {
+            let scrollPosition = window.scrollY;
+            let viewportHeight = window.innerHeight;
+            let textBlocks = document.querySelectorAll(".text-block");
+
+            textBlocks.forEach((block) => {
+                let blockTop = block.getBoundingClientRect().top;
+                let triggerStart = viewportHeight * 0.65; // Start fading in earlier
+                let triggerEnd = viewportHeight * 0.35; // Keep text visible longer
+
+                if (blockTop < triggerStart && blockTop > triggerEnd) {
+                    let opacity = 1 - Math.abs(blockTop - viewportHeight / 2) / (viewportHeight * 0.3);
+                    block.style.opacity = Math.max(0, Math.min(1, opacity));
+                    block.style.transform = `translateY(${(1 - opacity) * 50}px)`;
+                } else {
+                    block.style.opacity = 0;
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
