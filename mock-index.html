@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Game Landing</title>
+    <link href="./src/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Playwrite+AU+SA:wght@100..400&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-b from-[#3b0d0d] via-[#601010] to-[#8b2c10] text-white">
+    
+    <!-- Navbar -->
+    <nav class="absolute top-0 w-full flex justify-between items-center p-6 bg-opacity-10">
+        <div class="text-xl font-bold">LOGO</div>
+        <ul class="flex space-x-6">
+            <li><a href="#" class="hover:text-orange-400">Home</a></li>
+            <li><a href="#" class="hover:text-orange-400">Contact</a></li>
+            <li><a href="#" class="hover:text-orange-400">About PVP Inc.</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative h-screen flex flex-col md:flex-row items-center justify-between px-8 md:px-12 text-left">
+    
+        <!-- Background -->
+        <div style="background-image: url('images/transparent-bg.png'); background-size: 100% auto; background-position: top; height: 50%;" class="absolute bottom-0 left-0 w-full -z-40 bg-cover"></div>
+        
+        <!-- Flex Container -->
+        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between w-full max-w-4xl mx-auto">
+            
+        
+    
+            <!-- Rocket Image (Right Side) -->
+            <div class="mt-8 md:mt-0">
+                <img src="images/spaceship.png" alt="Rocket" class="w-60 md:w-64 rotate-45">
+            </div>
+
+            <!-- Content (Text on Left) -->
+            <div class="flex flex-col items-start text-white max-w-lg text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl font-bold">MARS OVERDRIVE</h1>
+                <p class="text-lg md:text-xl text-orange-300">Landing Page for a Space Adventure</p>
+                <p class="max-w-md text-sm md:text-base text-orange-200 mt-4">
+                    Prepare for a mission to Mars! Explore, survive, and conquer.
+                </p>
+                <a href="#" class="mt-6 px-6 py-3 bg-orange-600 hover:bg-orange-800 rounded-full text-lg font-semibold shadow-lg transition duration-300">
+                    Begin Your Mission
+                </a>
+            </div>
+    
+        </div>
+    
+    </section>
+</body>
+</html>
