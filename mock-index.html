@@ -18,24 +18,37 @@
     <nav class="absolute top-0 w-full flex justify-between items-center z-50 p-6 bg-opacity-10">
         <div class="text-xl font-bold">LOGO</div>
         <ul class="flex space-x-6">
-            <li><a href="#" class="hover:text-orange-400">Home</a></li>
-            <li><a href="#" class="hover:text-orange-400">Contact</a></li>
-            <li><a href="#" class="hover:text-orange-400">About PVP Inc.</a></li>
+            <li>
+                <a href="#" class="relative text-lg font-semibold text-white transition-all duration-300 hover:text-blue-400 glitch">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="#" class="relative text-lg font-semibold text-white transition-all duration-300 hover:text-blue-400 glitch">
+                    Contact
+                </a>
+            </li>
+            <li>
+                <a href="#" class="relative text-lg font-semibold text-white transition-all duration-300 hover:text-blue-400 glitch">
+                    About PVP Inc.
+                </a>
+            </li>
         </ul>
+          
     </nav>
     
     <!-- Hero Section (UNCHANGED) -->
     <section class="mars-overdrive relative h-screen flex flex-col md:flex-row items-center justify-between px-8 md:px-12 text-left">
     
         <!-- Background (UNCHANGED) -->
-        <div style="background-image: url('images/transparent-bg.png'); background-size: 100% auto; background-position: top; height: 50%;" class="absolute bottom-0 left-0 w-full  bg-cover"></div>
+        <!-- <div class="belt-container" id="asteroidBelt"></div> -->
         
         <!-- Flex Container (UNCHANGED) -->
         <div class="relative z-50 flex flex-col md:flex-row items-center justify-between w-full max-w-4xl mx-auto">
             
             <!-- Rocket Image (UNCHANGED) -->
             <div class="mt-8 md:mt-0">
-                <img src="images/spaceship.png" alt="Rocket" class="w-60 md:w-64 rotate-[135deg]">
+                <img src="images/spaceship.png" alt="Rocket" class="w-60 md:w-64 rotate-45">
             </div>
 
             <!-- Content (UNCHANGED) -->
@@ -45,9 +58,18 @@
                 <p class="max-w-md text-sm md:text-base text-orange-200 mt-4">
                     Prepare for a mission to Mars! Explore, survive, and conquer.
                 </p>
-                <a href="#" class="mt-6 px-6 py-3 bg-orange-600 hover:bg-orange-800 rounded-full text-lg font-semibold shadow-lg transition duration-300">
-                    Begin Your Mission
-                </a>
+                <div class="flex mt-14 items-center">
+                    <a href="#">
+                        <button class="mr-6">
+                            <img src="images/play-store.png">
+                        </button>
+                    </a>
+                    <a href="#">
+                        <button class="mr-6 ">
+                            <img src="images/app-store.png">
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -55,42 +77,52 @@
 
 
        <!-- Mini Spaceship (FIXED) -->
-       <div id="mini-ship">
-        <img src="images/spaceship.png" alt="Mini Rocket" class=" w-24 md:w-32">
-    </div>
 
-    <!-- Scrolling Content with Parallax Text -->
-    <section class="relative h-[400vh] flex flex-col items-center justify-start overflow-hidden">
-        <div class="w-full flex justify-center"> 
-            <!-- Centered container -->
-            <div class="mt-48 px-6 grid grid-cols-2 gap-x-40 gap-y-[40vh] place-items-center"> 
-                <!-- Right-aligned text -->
-                <div class="text-block text-lg text-left bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac urna vel metus varius luctus.
-                </div>
-                <div></div> <!-- Empty block for spacing -->
-        
-                <div></div> <!-- Empty block for spacing -->
-                <!-- Left-aligned text -->
-                <div class="text-block text-lg text-right bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
-                    Nullam viverra lorem sed justo pretium, eget feugiat dolor pharetra.
-                </div>
+<div id="mini-ship" >
+    <img src="images/spaceship.png" alt="Mini Rocket" class="w-24 md:w-32">
+</div>
+
+<!-- Scrolling Content with Parallax Text -->
+<section class="relative h-[400vh] flex flex-col items-center justify-start overflow-hidden">
+    <div class="w-full flex justify-center"> 
+        <!-- Centered container -->
+        <div class="mt-48 px-6 grid grid-cols-2 gap-x-40 gap-y-[40vh] place-items-center"> 
+            <!-- Right-aligned text -->
+            <div class="text-block text-lg text-left bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac urna vel metus varius luctus.
+            </div>
+            <div></div> <!-- Empty block for spacing -->
     
-                <!-- Right-aligned text -->
-                <div class="text-block text-lg text-left bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
-                    Fusce interdum magna nec tellus pharetra, ac faucibus tortor consectetur.
-                </div>
-                <div></div> <!-- Empty block for spacing -->
-    
-                <div></div> <!-- Empty block for spacing -->
-                <!-- Left-aligned text -->
-                <div class="text-block text-lg text-right bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
-                    Sed tristique velit id ligula ultricies, ac consequat mi interdum.
-                </div>
+            <div></div> <!-- Empty block for spacing -->
+            <!-- Left-aligned text -->
+            <div class="text-block text-lg text-right bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
+                Nullam viverra lorem sed justo pretium, eget feugiat dolor pharetra.
+            </div>
+
+            <!-- Right-aligned text -->
+            <div class="text-block text-lg text-left bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
+                Fusce interdum magna nec tellus pharetra, ac faucibus tortor consectetur.
+            </div>
+            <div></div> <!-- Empty block for spacing -->
+
+            <div></div> <!-- Empty block for spacing -->
+            <!-- Left-aligned text -->
+            <div class="text-block text-lg text-right bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
+                Sed tristique velit id ligula ultricies, ac consequat mi interdum.
             </div>
         </div>
-    </section>
+    </div>
 
+    <!-- Mars Landscape (Landing Area) -->
+    <div id="landing-zone" class="absolute bottom-0 left-0 w-full bg-cover"
+        style="background-image: url('images/transparent-bg.png');  
+            background-repeat: no-repeat; 
+            background-size: 100% 20%;
+            background-position: center bottom;
+            height: 50%;">
+    </div>
+</section>
+   
 
 
 <script src="js/script.js"></script>
