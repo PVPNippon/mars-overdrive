@@ -63,6 +63,31 @@ document.addEventListener("scroll", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+    const menuItems = menu.querySelectorAll("li");
+
+    menuToggle.addEventListener("click", () => {
+        if (menu.classList.contains("hidden")) {
+            menu.classList.remove("hidden");
+
+            // Animate menu items one by one
+            menuItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.remove("opacity-0", "translate-x-10");
+                }, index * 150);
+            });
+        } else {
+            // Hide menu items instantly
+            menuItems.forEach((item) => {
+                item.classList.add("opacity-0", "translate-x-10");
+            });
+
+            setTimeout(() => {
+                menu.classList.add("hidden");
+            }, 500); // Delay hiding the entire menu
+        }
+    });
     const starContainer = document.querySelector(".stars");
 
     for (let i = 0; i < 200; i++) { // Number of stars
