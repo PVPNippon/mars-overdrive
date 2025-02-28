@@ -42,24 +42,24 @@ document.addEventListener("scroll", function () {
             scrambleLetters(block);
         }
     });
-    let miniShip = document.getElementById("mini-ship");
-    const landingZone = document.getElementById("landing-zone");
+    // let miniShip = document.getElementById("mini-ship");
+    // const landingZone = document.getElementById("landing-zone");
     
-    // Spaceship Visibility & Landing Effect
-    const shipPosition = miniShip.getBoundingClientRect().bottom;
-    const landingPosition = landingZone.getBoundingClientRect().top;
+    // // Spaceship Visibility & Landing Effect
+    // const shipPosition = miniShip.getBoundingClientRect().bottom;
+    // const landingPosition = landingZone.getBoundingClientRect().top;
 
-    if (scrollPosition > 100) { 
-        miniShip.style.opacity = "1";  // 🚀 Show spaceship after slight scroll
-    } else {
-        miniShip.style.opacity = "0";  // 👀 Hide when scrolled to the top
-    }
+    // if (scrollPosition > 100) { 
+    //     miniShip.style.opacity = "1";  // 🚀 Show spaceship after slight scroll
+    // } else {
+    //     miniShip.style.opacity = "0";  // 👀 Hide when scrolled to the top
+    // }
 
-    if (shipPosition >= landingPosition) { 
-        miniShip.style.animation = "landAndFade 1.5s forwards ease-in-out";
-    } else {
-        miniShip.style.animation = "float 3s infinite ease-in-out";  // ⬆️ Restore float animation
-    }
+    // if (shipPosition >= landingPosition) { 
+    //     miniShip.style.animation = "landAndFade 1.5s forwards ease-in-out";
+    // } else {
+    //     miniShip.style.animation = "float 3s infinite ease-in-out";  // ⬆️ Restore float animation
+    // }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
