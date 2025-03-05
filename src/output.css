@@ -1498,6 +1498,10 @@ body {
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
+
+  .md\:font-bold {
+    font-weight: 700;
+  }
 }
 
 @media (min-width: 1024px) {
