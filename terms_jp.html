@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="style.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="./src/output.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,64 +19,42 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-		<style>
-			body {
-				font-family: Arial, sans-serif;
-				color: #3A2007;
-				margin: 0;
-				padding: 16px;
-				background-color: #f9f9f9;
-			}
-
-			h1 {
-				font-size: 1.5rem;
-				margin-bottom: 1rem;
-			}
-
-			h2 {
-				font-size: 1.25rem;
-				margin: 1.5rem 0 1rem;
-				color: #3A2007;
-			}
-
-		</style>
 	</head>
 
-  <body class="bg-gradient-to-br from-gray-900 via-black to-gray-950 text-gray-200 min-h-screen flex flex-col">
-    <nav class="bg-gray-800 fixed top-0 w-full shadow-lg z-50">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold tracking-wide hover:text-gray-300 transition">
-                Mars Overdrive
+  <body class="bg-[#3a0d61] text-white">
+	 <!-- Stars Background -->
+	 <div class="stars"></div>
+	 <div id="asteroid-container"></div>
+<!-- Navbar -->
+<nav class="relative top-0 w-full flex justify-between items-center z-50 p-6 bg-opacity-10 ">
+    <div class="w-[120px] "><img src="images/logo.png" alt="Rocket" ></div>
+
+    <!-- Hamburger Menu (Mobile) -->
+    <button id="menu-toggle" class="lg:hidden text-white text-2xl focus:outline-none relative z-50">
+        ☰
+    </button>
+
+    <!-- Menu -->
+    <ul id="menu"
+        class="hidden absolute top-full right-6  flex-col items-end space-y-2 lg:flex lg:relative lg:top-0 lg:right-0 lg:space-x-6 lg:space-y-0 lg:items-start lg:flex-row">
+        
+        <li class="opacity-0 translate-x-10 lg:opacity-100 lg:translate-x-0 transition-all duration-300 ease-out text-right">
+            <a href="#" class="block text-lg font-semibold text-white transition-all duration-300 hover:text-blue-400 glitch">
+                Home
             </a>
-            <div class="flex space-x-6">
-              <!-- English Hover -->
-              <div class="relative inline-block">
-                  <div class="group inline-block cursor-pointer font-medium text-white hover:text-gray-400 transition">
-                      Privacy Policy
-                      <div class="absolute left-0 mt-2 w-48 bg-[#f9f9f9] shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity border border-white">
-                          <div class="p-2 hover:bg-[#EDE0D4]">
-                              <a href="privacy.html" class="block text-sm text-gray-900 hover:underline">English</a>
-                              <a href="privacy_jp.html" class="block text-sm text-gray-900 hover:underline">日本語</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          
-              <!-- Japanese Hover -->
-              <div class="relative inline-block">
-                  <div class="group inline-block cursor-pointer font-medium text-white hover:text-gray-400 transition">
-                      Terms of Service
-                      <div class="absolute left-0 mt-2 w-48 bg-[#f9f9f9] shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity border border-white">
-                          <div class="p-2 hover:bg-[#EDE0D4]">
-                              <a href="terms.html" class="block text-sm text-gray-900 hover:underline">English</a>
-                              <a href="terms_jp.html" class="block text-sm text-gray-900 hover:underline">日本語</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-    </nav>
+        </li>
+        <li class="opacity-0 translate-x-10 lg:opacity-100 lg:translate-x-0 transition-all duration-300 ease-out delay-100 text-right">
+            <a href="#" class="block text-lg font-semibold text-white transition-all duration-300 hover:text-blue-400 glitch">
+                Contact
+            </a>
+        </li>
+        <li class="opacity-0 translate-x-10 lg:opacity-100 lg:translate-x-0 transition-all duration-300 ease-out delay-200 text-right">
+            <a href="#" class="block text-lg font-semibold text-white transition-all duration-300 hover:text-blue-400 glitch">
+                About PVP Inc.
+            </a>
+        </li>
+    </ul>
+</nav>
 		<main
 			class="px-12 py-8 bg-white max-w-5xl mx-auto shadow-md shadow-emerald-800/15 rounded-lg mt-8 text-black"
 			style="font-family: Noto Sans JP;">
@@ -289,26 +267,115 @@
 </main>
 
 
-<script>
-  function toggleAccordion(element) {
-    const content = element.nextElementSibling;
+<section>
+  <!-- Footer on Mars Landscape -->
+  <div id="footer-wrapper" class="static mt-2 bottom-0 left-0 w-full">
+   <footer class="w-full px-8 py-4 text-white text-sm bg-opacity-50 backdrop-blur-md"
+     style="background: rgba(0, 0, 0, 0.3);">
+     
+     <!-- Desktop View (Links on Right, Copyright on Left) -->
+     <div class="hidden md:flex justify-between items-center w-full">
+       <!-- Copyright -->
+       <div class="font-medium">
+         &copy; 2025 PVP Inc. All Rights Reserved.
+       </div>
+ 
+       <!-- Links Row -->
+       <div class="flex space-x-6">
+         <!-- Privacy Policy -->
+         <div class="relative inline-block">
+           <div class="group inline-block cursor-pointer font-medium text-white hover:text-gray-400 transition glitch">
+             Privacy Policy
+           
+           <div class="absolute left-0 bottom-full mb-2 p-3 bg-black bg-opacity-40 backdrop-blur-md 
+             shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity 
+             border border-white text-white z-50">
+             <div class="p-2">
+               <a href="privacy.html" class="block text-sm hover:text-blue-400 transition mb-2">English</a>
+               <a href="privacy_jp.html" class="block text-sm hover:text-blue-400 transition">日本語</a>
+             </div>
+           </div>
+         </div>
+         </div>
+ 
+         <!-- Terms of Service -->
+         <div class="relative inline-block">
+           <div class="group inline-block cursor-pointer font-medium text-white hover:text-gray-400 transition glitch">
+             Terms of Service
+                                                    
+           <div class="absolute left-0 bottom-full mb-2 p-3 bg-black bg-opacity-40 backdrop-blur-md 
+             shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity 
+             border border-white text-white z-50">
+             <div class="p-2">
+               <a href="terms.html" class="block text-sm hover:text-blue-400 transition mb-2">English</a>
+               <a href="terms_jp.html" class="block text-sm hover:text-blue-400 transition">日本語</a>
+             </div>
+           </div>
+         </div>
+         </div>
+ 
+         <!-- Contact -->
+         <a href="#" class="hover:text-blue-400 transition-colors duration-300 glitch">Contact</a>
+ 
+         <!-- About PVP Inc. -->
+         <a href="#" class="hover:text-blue-400 transition-colors duration-300 glitch">About PVP Inc.</a>
+       </div>
+     </div>
+ 
+     <!-- Mobile View (Links on Top, Copyright Below) -->
+     <div class="md:hidden flex flex-col items-center text-center space-y-4">
+       <!-- Links -->
+       <div class="flex flex-wrap justify-center space-x-6">
+         <!-- Privacy Policy -->
+         <div class="relative inline-block">
+           <div class="group inline-block cursor-pointer font-medium text-white hover:text-gray-400 transition glitch">
+             Privacy Policy
 
-    if (content.classList.contains('open')) { // Collapse
-      content.style.height = '0';
-      content.classList.remove('open');
-    } else { // Collapse all others
-      document.querySelectorAll('.accordion-content.open').forEach(openAccordion => {
-        openAccordion.style.height = '0';
-        openAccordion.classList.remove('open');
-      });
+           <div class="absolute left-0 bottom-full mb-2 p-3 bg-black bg-opacity-40 backdrop-blur-md 
+             shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity 
+             border border-white text-white z-50">
+             <div class="p-2">
+               <a href="privacy.html" class="block text-sm hover:text-blue-400 transition">English</a>
+               <a href="privacy_jp.html" class="block text-sm hover:text-blue-400 transition">日本語</a>
+             </div>
+           </div>
+         </div>
+         </div>
+ 
+         <!-- Terms of Service -->
+         <div class="relative inline-block">
+           <div class="group inline-block cursor-pointer font-medium text-white hover:text-gray-400 transition glitch">
+             Terms of Service
+           
+           <div class="absolute left-0 bottom-full mb-2 p-3 bg-black bg-opacity-40 backdrop-blur-md 
+             shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity 
+             border border-white text-white z-50">
+             <div class="p-2">
+               <a href="terms.html" class="block text-sm hover:text-blue-400 transition">English</a>
+               <a href="terms_jp.html" class="block text-sm hover:text-blue-400 transition">日本語</a>
+             </div>
+           </div>
+         </div>
+         </div>
+ 
+         <!-- Contact -->
+         <a href="#" class="hover:text-blue-400 transition-colors duration-300 glitch">Contact</a>
+ 
+         <!-- About PVP Inc. -->
+         <a href="#" class="hover:text-blue-400 transition-colors duration-300 glitch">About PVP Inc.</a>
+       </div>
+ 
+       <!-- Copyright -->
+       <div class="font-medium">
+         &copy; 2025 PVP Inc. All Rights Reserved.
+       </div>
+     </div>
+ 
+   </footer>
+ </section>
 
-      // Expand clicked accordion
-      content.style.height = content.scrollHeight + 'px';
-      content.classList.add('open');
-    }
-  }
-</script>
-<script src="index.js"></script>
-</body>
+
+ <script src="js/script.js"></script>
+<script src="js/asteroids.js"></script>
 </body>
 </html>
