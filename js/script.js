@@ -64,30 +64,33 @@ document.addEventListener("scroll", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const menuToggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
-    const menuItems = menu.querySelectorAll("li");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const closeMenu = document.getElementById("close-menu");
+    const menuItems = mobileMenu.querySelectorAll("li");
 
     menuToggle.addEventListener("click", () => {
-        if (menu.classList.contains("hidden")) {
-            menu.classList.remove("hidden");
+        mobileMenu.classList.remove("translate-x-full");
 
-            // Animate menu items one by one
-            menuItems.forEach((item, index) => {
-                setTimeout(() => {
-                    item.classList.remove("opacity-0", "translate-x-10");
-                }, index * 150);
-            });
-        } else {
-            // Hide menu items instantly
-            menuItems.forEach((item) => {
-                item.classList.add("opacity-0", "translate-x-10");
-            });
-
+        // Animate menu items one by one
+        menuItems.forEach((item, index) => {
             setTimeout(() => {
-                menu.classList.add("hidden");
-            }, 500); // Delay hiding the entire menu
-        }
+                item.classList.remove("opacity-0", "translate-x-10");
+            }, index * 150);
+        });
     });
+
+    function closeDrawer() {
+        // Hide menu items instantly
+        menuItems.forEach((item) => {
+            item.classList.add("opacity-0", "translate-x-10");
+        });
+
+        setTimeout(() => {
+            mobileMenu.classList.add("translate-x-full");
+        }, 300);
+    }
+
+    closeMenu.addEventListener("click", closeDrawer);
     const starContainer = document.querySelector(".stars");
 
     for (let i = 0; i < 200; i++) { // Number of stars

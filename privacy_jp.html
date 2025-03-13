@@ -25,35 +25,53 @@
 		<div class="stars"></div>
 		<div id="asteroid-container"></div>
    <!-- Navbar -->
-   <nav class="relative top-0 w-full flex justify-between items-center z-50 p-6 bg-opacity-10 ">
-	   <div class="w-[120px] "><img src="images/logo.png" alt="Rocket" ></div>
-   
-	   <!-- Hamburger Menu (Mobile) -->
-	   <button id="menu-toggle" class="lg:hidden text-white text-2xl focus:outline-none relative z-50">
-		   ☰
-	   </button>
-   
-	   <!-- Menu -->
-	   <ul id="menu"
-		   class="hidden absolute top-full right-6  flex-col items-end space-y-2 lg:flex lg:relative lg:top-0 lg:right-0 lg:space-x-6 lg:space-y-0 lg:items-start lg:flex-row">
-		   
-		   <li class="opacity-0 translate-x-10 lg:opacity-100 lg:translate-x-0 transition-all duration-300 ease-out text-right">
-			   <a href="#" class="block text-lg font-semibold text-white transition-all duration-300 hover:text-blue-400 glitch">
-				   Home
-			   </a>
-		   </li>
-		   <li class="opacity-0 translate-x-10 lg:opacity-100 lg:translate-x-0 transition-all duration-300 ease-out delay-100 text-right">
-			   <a href="#" class="block text-lg font-semibold text-white transition-all duration-300 hover:text-blue-400 glitch">
-				   Contact
-			   </a>
-		   </li>
-		   <li class="opacity-0 translate-x-10 lg:opacity-100 lg:translate-x-0 transition-all duration-300 ease-out delay-200 text-right">
-			   <a href="#" class="block text-lg font-semibold text-white transition-all duration-300 hover:text-blue-400 glitch">
-				   About PVP Inc.
-			   </a>
-		   </li>
-	   </ul>
-   </nav>		<main
+   <nav class="relative top-0 w-full flex justify-between items-center z-100 p-6 bg-opacity-10">
+    <a href="index.html" class="w-[120px]">
+        <img src="images/logo.png" alt="Rocket">
+    </a>
+
+    <!-- Hamburger Menu (Mobile Only) -->
+    <button id="menu-toggle" class="lg:hidden text-white text-2xl focus:outline-none z-50">
+        ☰
+    </button>
+
+    <!-- Menu for Desktop (Unchanged) -->
+    <ul id="menu"
+        class="hidden absolute top-full right-6 flex-col items-end space-y-2 lg:flex lg:relative lg:top-0 lg:right-0 lg:space-x-6 lg:space-y-0 lg:items-start lg:flex-row">
+        <li class="opacity-0 translate-x-10 lg:opacity-100 lg:translate-x-0 transition-all duration-300 ease-out text-right">
+            <a href="#" class="block text-lg font-semibold text-white transition-all duration-300 hover:text-blue-400 glitch">
+                Home
+            </a>
+        </li>
+        <li class="opacity-0 translate-x-10 lg:opacity-100 lg:translate-x-0 transition-all duration-300 ease-out delay-100 text-right">
+            <a href="#" class="block text-lg font-semibold text-white transition-all duration-300 hover:text-blue-400 glitch">
+                Contact
+            </a>
+        </li>
+        <li class="opacity-0 translate-x-10 lg:opacity-100 lg:translate-x-0 transition-all duration-300 ease-out delay-200 text-right">
+            <a href="#" class="block text-lg font-semibold text-white transition-all duration-300 hover:text-blue-400 glitch">
+                About PVP Inc.
+            </a>
+        </li>
+    </ul>
+
+    <!-- Mobile Full-Screen Drawer (Only Affects Mobile) -->
+    <div id="mobile-menu"
+        class="fixed top-0 right-0 w-full h-full bg-black bg-opacity-90 transform translate-x-full transition-transform duration-300 ease-in-out z-50 flex flex-col items-end p-6 lg:hidden">
+        
+        <!-- Close Button -->
+        <button id="close-menu" class="text-white text-3xl">✖</button>
+
+        <!-- Navigation Links -->
+        <ul class="mt-12 space-y-6 text-right">
+            <li class="opacity-0 translate-x-10 transition-all duration-300 ease-out"><a href="#" class="block text-lg font-semibold text-white hover:text-blue-400">Home</a></li>
+            <li class="opacity-0 translate-x-10 transition-all duration-300 ease-out delay-100"><a href="#" class="block text-lg font-semibold text-white hover:text-blue-400">Contact</a></li>
+            <li class="opacity-0 translate-x-10 transition-all duration-300 ease-out delay-200"><a href="#" class="block text-lg font-semibold text-white hover:text-blue-400">About PVP Inc.</a></li>
+        </ul>
+    </div>
+</nav>
+		
+<main
 			class="px-12 py-8 bg-white max-w-5xl mx-auto shadow-md shadow-emerald-800/15 rounded-lg mt-8 text-black"
 			style="font-family: Noto Sans JP;">
 
