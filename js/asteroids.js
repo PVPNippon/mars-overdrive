@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     for (let i = 0; i < numAsteroids; i++) {
         const asteroid = document.createElement("img");
-        asteroid.src = `./images/${asteroidImages[Math.floor(Math.random() * asteroidImages.length)]}`;
+        asteroid.src = `/images/${asteroidImages[Math.floor(Math.random() * asteroidImages.length)]}`;
         asteroid.classList.add("asteroid");
 
         // ✅ Random size (30px - 110px)
