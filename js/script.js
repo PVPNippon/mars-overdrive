@@ -1,4 +1,4 @@
-const alienChars = ["⟇", "⏚", "⌰", "⊑", "⊔", "⏃", "⎔", "⏁", "⋔", "⏏", "⟟", "⊕", "⏦"];
+const alienChars = ["⟇", "⏚", "⌰", "⊑", "⊔", "⏃", "⎔", "⏁", "⋔", "⟟", "⊕", "⏦"];
 
 document.addEventListener("scroll", function () {
     let scrollPosition = window.scrollY;
