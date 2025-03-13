@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Game Landing</title>
+    <link href="./src/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Playwrite+AU+SA:wght@100..400&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#3a0d61] text-white">
+    <!-- Stars Background -->
+    <div class="stars"></div>
+    <div id="asteroid-container"></div>
+    
+<!-- Navbar -->
+<nav class="absolute top-0 w-full flex justify-between items-center z-50 p-6 bg-opacity-10">
+    <a href="index.html" class="w-[120px]">
+        <img src="images/logo.png" alt="Rocket">
+    </a>
+
+    <!-- Hamburger Menu (Mobile) -->
+    <button id="menu-toggle" class="lg:hidden text-white text-2xl focus:outline-none relative z-50">
+        ☰
+    </button>
+
+    <!-- Background Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden"></div>
+
+    <!-- Drawer Sidebar (Mobile) -->
+    <div id="menu"
+        class="fixed right-0 top-0 h-full w-64 bg-black bg-opacity-90 text-white transform translate-x-full transition-transform duration-300 ease-out lg:hidden flex flex-col p-6 space-y-6">
+        
+        <!-- Close Button -->
+        <button id="close-menu" class="text-white text-3xl self-end">✖</button>
+
+        <!-- Menu Items -->
+        <ul class="space-y-4">
+            <li class="opacity-0 translate-x-10 transition-all duration-300 ease-out">
+                <a href="#" class="block text-lg font-semibold transition-all duration-300 hover:text-blue-400 glitch">
+                    Home
+                </a>
+            </li>
+            <li class="opacity-0 translate-x-10 transition-all duration-300 ease-out delay-100">
+                <a href="#" class="block text-lg font-semibold transition-all duration-300 hover:text-blue-400 glitch">
+                    Contact
+                </a>
+            </li>
+            <li class="opacity-0 translate-x-10 transition-all duration-300 ease-out delay-200">
+                <a href="#" class="block text-lg font-semibold transition-all duration-300 hover:text-blue-400 glitch">
+                    About PVP Inc.
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    
+    
+    <!-- Hero Section (UNCHANGED) -->
+    <section class="mars-overdrive relative h-screen flex flex-col items-center justify-center px-8 md:px-12 text-center md:text-left">
+    
+        <!-- Background (UNCHANGED) -->
+        <!-- <div class="belt-container" id="asteroidBelt"></div> -->
+        
+        <!-- Flex Container (Updated for Mobile) -->
+        <div class="relative z-50 flex flex-col-reverse md:flex-row items-center justify-between w-full max-w-4xl mx-auto">
+            
+            <!-- Rocket Image (Moves Below Text on Mobile) -->
+            <div class="mt-8 md:mt-0">
+                <img src="images/spaceship.png" alt="Rocket" class="w-60 md:w-64 md:rotate-45">
+            </div>
+    
+            <!-- Content (Centered in Mobile, Left-Aligned in Desktop) -->
+            <div class="flex flex-col items-center md:items-start text-white max-w-lg">
+                <h1 class="text-4xl md:text-6xl font-bold">MARS OVERDRIVE</h1>
+
+                <p class="max-w-md text-sm md:text-base text-orange-200 mt-4 text-center md:text-left">
+                    Fulfill your destiny as the ultimate space-age hero
+                </p>
+                <div class="flex mt-14 items-center">
+                    <a href=" https://play.google.com/store/apps/details?id=jp.co.pvp.marsoverdrive">
+                        <button class="mr-6">
+                            <img src="images/play-store.png">
+                        </button>
+                    </a>
+                    <a href="https://apps.apple.com/app/mars-overdrive/id6741830220">
+                        <button class="mr-6">
+                            <img src="images/app-store.png">
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+       <!-- Mini Spaceship (FIXED) -->
+
+<div id="mini-ship" >
+    <img src="images/spaceship.png" alt="Mini Rocket" class="w-24 md:w-32">
+</div>
+
+<!-- Scrolling Content with Parallax Text -->
+<section class="relative h-[400vh] flex flex-col items-center justify-start overflow-hidden">
+    <div class="w-full flex justify-center"> 
+        <!-- Centered container -->
+        <div class="mt-48 px-6 grid grid-cols-2 gap-x-40 gap-y-[40vh] place-items-center"> 
+            <!-- Right-aligned text -->
+            <div class="text-block md:font-bold md:text-2xl text-xs text-left bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
+                For centuries, we’ve looked to the stars, dreaming of life beyond Earth. Now, the future of Mars colonization is in your hands.
+            </div>
+            <div></div> <!-- Empty block for spacing -->
+    
+            <div></div> <!-- Empty block for spacing -->
+            <!-- Left-aligned text -->
+            <div class="text-block md:font-bold md:text-2xl text-xs text-right bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
+                A spaceship hurtles toward Mars, and you’re the only one keeping it stocked. Tap to send the right supplies, dodge dangerous cargo, and keep the mission on track. One mistake could mean disaster.
+            </div>
+
+            <!-- Right-aligned text -->
+            <div class="text-block md:font-bold md:text-2xl text-xs  text-left bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
+                Not everything is what it seems. Some supplies are essential, while others could doom the mission. Think fast, memorize key items, and make split-second calls before it’s too late. 
+            </div>
+            <div></div> <!-- Empty block for spacing -->
+
+            <div></div> <!-- Empty block for spacing -->
+            <!-- Left-aligned text -->
+            <div class="text-block md:font-bold md:text-2xl text-xs text-right bg-gray-900 bg-opacity-70 p-6 rounded-lg shadow-lg max-w-md">
+                The closer the ship gets to Mars, the faster things move.  Can you keep up, or will the dream of Mars slip through humanity's fingers?
+            </div>
+        </div>
+    </div>
+
+    <!-- Mars Landscape (Landing Area) -->
+    <div id="landing-zone" class="absolute bottom-0 left-0 w-full bg-cover"
+        style="background-image: url('images/transparent-bg.png');  
+            background-repeat: no-repeat; 
+            background-size: 100% 20%;
+            background-position: center bottom;
+            height: 50%;">
+    </div>
+    <!-- Footer on Mars Landscape -->
+    <div id="footer-wrapper" class="absolute bottom-0 left-0 w-full">
+        <footer class="w-full px-8 py-4 text-white text-sm bg-opacity-50 backdrop-blur-md"
+            style="background: rgba(0, 0, 0, 0.3);">
+            
+            <!-- Desktop View (Links on Right, Copyright on Left) -->
+            <div class="hidden md:flex justify-between items-center w-full">
+                <!-- Copyright -->
+                <div class="font-medium">
+                    &copy; 2025 PVP Inc. All Rights Reserved.
+                </div>
+    
+                <!-- Links Row -->
+                <div class="flex space-x-6">
+                    <!-- Privacy Policy -->
+                    <div class="relative inline-block">
+                        <div class="group inline-block cursor-pointer font-medium text-white hover:text-gray-400 transition glitch">
+                            Privacy Policy
+                        
+                        <div class="absolute left-0 bottom-full mb-2 p-3 bg-black bg-opacity-40 backdrop-blur-md 
+                            shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity 
+                            border border-white text-white z-50">
+                            <div class="p-2">
+                                <a href="privacy.html" class="block text-sm hover:text-blue-400 transition mb-2">English</a>
+                                <a href="privacy_jp.html" class="block text-sm hover:text-blue-400 transition">日本語</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+    
+                    <!-- Terms of Service -->
+                    <div class="relative inline-block">
+                        <div class="group inline-block cursor-pointer font-medium text-white hover:text-gray-400 transition glitch">
+                            Terms of Service
+                                                                                                       
+                        <div class="absolute left-0 bottom-full mb-2 p-3 bg-black bg-opacity-40 backdrop-blur-md 
+                            shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity 
+                            border border-white text-white z-50">
+                            <div class="p-2">
+                                <a href="terms.html" class="block text-sm hover:text-blue-400 transition mb-2">English</a>
+                                <a href="terms_jp.html" class="block text-sm hover:text-blue-400 transition">日本語</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+    
+                    <!-- Contact -->
+                    <a href="#" class="hover:text-blue-400 transition-colors duration-300 glitch">Contact</a>
+    
+                    <!-- About PVP Inc. -->
+                    <a href="#" class="hover:text-blue-400 transition-colors duration-300 glitch">About PVP Inc.</a>
+                </div>
+            </div>
+    
+            <!-- Mobile View (Links on Top, Copyright Below) -->
+            <div class="md:hidden flex flex-col items-center text-center space-y-4">
+                <!-- Links -->
+                <div class="flex flex-wrap justify-center space-x-6">
+                    <!-- Privacy Policy -->
+                    <div class="relative inline-block">
+                        <div class="group inline-block cursor-pointer font-medium text-white hover:text-gray-400 transition glitch">
+                            Privacy Policy
+
+                        <div class="absolute left-0 bottom-full mb-2 p-3 bg-black bg-opacity-40 backdrop-blur-md 
+                            shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity 
+                            border border-white text-white z-50">
+                            <div class="p-2">
+                                <a href="privacy.html" class="block text-sm hover:text-blue-400 transition">English</a>
+                                <a href="privacy_jp.html" class="block text-sm hover:text-blue-400 transition">日本語</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+    
+                    <!-- Terms of Service -->
+                    <div class="relative inline-block">
+                        <div class="group inline-block cursor-pointer font-medium text-white hover:text-gray-400 transition glitch">
+                            Terms of Service
+                        
+                        <div class="absolute left-0 bottom-full mb-2 p-3 bg-black bg-opacity-40 backdrop-blur-md 
+                            shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity 
+                            border border-white text-white z-50">
+                            <div class="p-2">
+                                <a href="terms.html" class="block text-sm hover:text-blue-400 transition">English</a>
+                                <a href="terms_jp.html" class="block text-sm hover:text-blue-400 transition">日本語</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+    
+                    <!-- Contact -->
+                    <a href="#" class="hover:text-blue-400 transition-colors duration-300 glitch">Contact</a>
+    
+                    <!-- About PVP Inc. -->
+                    <a href="#" class="hover:text-blue-400 transition-colors duration-300 glitch">About PVP Inc.</a>
+                </div>
+    
+                <!-- Copyright -->
+                <div class="font-medium">
+                    &copy; 2025 PVP Inc. All Rights Reserved.
+                </div>
+            </div>
+    
+        </footer>
+    </div>
+</section>
+
+   
+
+
+<script src="js/script.js"></script>
+<script src="js/asteroids.js"></script>
+
+</body>
+</html>
