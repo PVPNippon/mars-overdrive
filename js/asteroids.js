@@ -1,25 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const numAsteroids = 10; // Number of asteroids
-    const container = document.getElementById("asteroid-container");
-    const asteroidImages = [
-        "asteroid1.png",
-        "asteroid2.png",
-        "asteroid3.png",
-        "asteroid4.png",
-        "asteroid5.png",
-        "asteroid6.png",
-        "asteroid7.png"
-    ]; // Add more if needed
+    const asteroids = document.querySelectorAll("#asteroid-container .asteroid");
 
-    for (let i = 0; i < numAsteroids; i++) {
-        const asteroid = document.createElement("img");
-        asteroid.src = `/images/${asteroidImages[Math.floor(Math.random() * asteroidImages.length)]}`;
-        asteroid.classList.add("asteroid");
-
-        // ✅ Random size (30px - 110px)
+    asteroids.forEach(asteroid => {
+        // ✅ Random size
         const size = Math.random() * 80 + 30; 
         asteroid.style.width = `${size}px`;
         asteroid.style.height = `${size}px`;
+        asteroid.style.position = "absolute";
 
         // ✅ Random start position
         let x = Math.random() * window.innerWidth;
@@ -28,37 +15,32 @@ document.addEventListener("DOMContentLoaded", function () {
         asteroid.style.top = `${y}px`;
 
         // ✅ Random movement speed
-        const speedX = (Math.random() - 0.5) * 2; // Random speed between -1 and 1
+        const speedX = (Math.random() - 0.5) * 2;
         const speedY = (Math.random() - 0.5) * 2;
 
         // ✅ Random rotation speed
-        let rotation = Math.random() * 360; // Initial rotation angle
-        const rotationSpeed = (Math.random() - 0.5) * 2; // Random slow rotation
+        let rotation = Math.random() * 360;
+        const rotationSpeed = (Math.random() - 0.5) * 2;
 
-        // ✅ Move & Rotate function
+        // ✅ Movement function
         function moveAsteroid() {
             x += speedX;
             y += speedY;
             rotation += rotationSpeed;
 
-            // Wrap around if asteroid moves out of bounds
+            // Wrap around screen
             if (x > window.innerWidth) x = -size;
             if (x < -size) x = window.innerWidth;
             if (y > window.innerHeight) y = -size;
             if (y < -size) y = window.innerHeight;
 
-            // Apply transformation
             asteroid.style.left = `${x}px`;
             asteroid.style.top = `${y}px`;
             asteroid.style.transform = `rotate(${rotation}deg)`;
 
-            requestAnimationFrame(moveAsteroid); // Keep moving & rotating smoothly
+            requestAnimationFrame(moveAsteroid);
         }
 
-        // Start movement and rotation
         requestAnimationFrame(moveAsteroid);
-
-        // Add to container
-        container.appendChild(asteroid);
-    }
+    });
 });
