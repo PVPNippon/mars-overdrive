@@ -1392,6 +1392,20 @@ body {
   opacity: 1;
 }
 
+@media (min-width: 640px) {
+  .sm\:gap-y-\[70vh\] {
+    row-gap: 70vh;
+  }
+
+  .sm\:gap-y-\[90vh\] {
+    row-gap: 90vh;
+  }
+
+  .sm\:gap-y-\[80vh\] {
+    row-gap: 80vh;
+  }
+}
+
 @media (min-width: 768px) {
   .md\:mt-0 {
     margin-top: 0px;
