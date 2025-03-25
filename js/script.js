@@ -96,24 +96,29 @@ function flipToEnglish(element) {
     element.textContent = text;
     element.dataset.isEnglish = "true";
     element.classList.remove("glowing");
+    element.classList.remove("cryptic");
 }
 
 // Letter Scramble Effect
 function scrambleLetters(element) {
-    const text = element.dataset.english || element.textContent;
-    element.dataset.english = text;
+    const originalText = element.dataset.english || element.textContent.trim();
+    element.dataset.english = originalText;
 
-    // If already scrambling, skip
     if (scrambleIntervals.has(element)) return;
 
-    // Start continuous scrambling
+    element.classList.add("cryptic"); // Add cryptic class ONLY during scramble
+
     const interval = setInterval(() => {
-        const scrambledText = text.split("").map(char =>
-            char === " " ? " " : alienChars[Math.floor(Math.random() * alienChars.length)]
-        ).join("");
+        let scrambledText = "";
+        for (let i = 0; i < originalText.length; i++) {
+            const char = originalText[i];
+            scrambledText += (char === " " || /[.,’'\-?!]/.test(char))
+                ? char
+                : alienChars[Math.floor(Math.random() * alienChars.length)];
+        }
         element.textContent = scrambledText;
         element.classList.add("glowing");
-    }, 100); // Scramble every 100ms
+    }, 100);
 
     scrambleIntervals.set(element, interval);
     element.dataset.isEnglish = "";

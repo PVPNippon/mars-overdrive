@@ -68,8 +68,12 @@ body {
     transform-style: preserve-3d;
   }
   
-  .text-block.flipping {
-    transform: rotateY(180deg);
+  .text-block.cryptic {
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.5;
+    max-height: calc(1.5em * 5);  /* Lock cryptic to 5 lines */
+    overflow: hidden;
   }
 
 .glowing {

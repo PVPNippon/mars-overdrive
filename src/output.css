@@ -1242,6 +1242,20 @@ body {
   }
 }
 
+.text-block {
+  transition: transform 0.3s, opacity 0.3s;
+  transform-style: preserve-3d;
+}
+
+.text-block.cryptic {
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.5;
+  max-height: calc(1.5em * 5);
+  /* Lock cryptic to 5 lines */
+  overflow: hidden;
+}
+
 .glowing {
   animation: neonGlow 0.5s infinite alternate;
   color: #ff00ff;
