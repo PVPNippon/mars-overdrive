@@ -63,6 +63,15 @@ body {
     100% { text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff; }
 }
 
+.text-block {
+    transition: transform 0.3s, opacity 0.3s;
+    transform-style: preserve-3d;
+  }
+  
+  .text-block.flipping {
+    transform: rotateY(180deg);
+  }
+
 .glowing {
     animation: neonGlow 0.5s infinite alternate;
     color: #ff00ff; /* Purple neon */

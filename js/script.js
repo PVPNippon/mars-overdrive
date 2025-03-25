@@ -1,21 +1,48 @@
 const alienChars = ["⟇", "⏚", "⌰", "⊑", "⊔", "⏃", "⎔", "⏁", "⋔", "⟟", "⊕", "⏦"];
 
-document.addEventListener("scroll", function () {
-    let scrollPosition = window.scrollY;
+// Smooth Scroll Dampening
+let targetScroll = 0;
+let currentScroll = 0;
+let isTicking = false;
+
+window.addEventListener("scroll", () => {
+    targetScroll = window.scrollY;
+    requestTick();
+});
+
+function requestTick() {
+    if (!isTicking) {
+        requestAnimationFrame(updateScroll);
+        isTicking = true;
+    }
+}
+
+function updateScroll() {
+    currentScroll += (targetScroll - currentScroll) * 0.07;
+    triggerEffects(currentScroll);
+
+    if (Math.abs(targetScroll - currentScroll) > 0.5) {
+        requestAnimationFrame(updateScroll);
+    } else {
+        isTicking = false;
+    }
+}
+
+// Main Scroll-based Effects
+function triggerEffects(scrollY) {
     let viewportHeight = window.innerHeight;
     let totalHeight = document.body.scrollHeight - window.innerHeight;
-    let scrollPercent = scrollPosition / totalHeight; // Get percentage of scroll
+    let scrollPercent = scrollY / totalHeight;
 
     // Galaxy to Mars Transition (Purple to Red)
-    let startColor = [58, 13, 97];   // Deep Purple (#3a0d61)
-    let midColor = [90, 24, 154];    // Cosmic Magenta (#5a189a)
-    let endColor = [139, 44, 16];    // Mars Red (#8b2c10)
+    let startColor = [58, 13, 97];
+    let midColor = [90, 24, 154];
+    let endColor = [139, 44, 16];
 
-    let newColor = startColor.map((start, i) => 
+    let newColor = startColor.map((start, i) =>
         Math.floor(start + (endColor[i] - start) * scrollPercent)
     );
-
-    let newMidColor = midColor.map((start, i) => 
+    let newMidColor = midColor.map((start, i) =>
         Math.floor(start + (endColor[i] - start) * scrollPercent)
     );
 
@@ -24,28 +51,67 @@ document.addEventListener("scroll", function () {
         rgb(${newMidColor.join(",")})
     )`;
 
-    // Text Block Fade-in Effect
-    let textBlocks = document.querySelectorAll(".text-block");
+    // Text Block English Zone Logic
+    const textBlocks = document.querySelectorAll(".text-block");
+    const englishZoneTop = viewportHeight * 0.4;
+    const englishZoneBottom = viewportHeight * 0.6;
 
     textBlocks.forEach((block) => {
-        let blockTop = block.getBoundingClientRect().top;
-        let triggerStart = viewportHeight * 0.65;
-        let triggerEnd = viewportHeight * 0.35;
+        const blockTop = block.getBoundingClientRect().top;
+        const blockBottom = block.getBoundingClientRect().bottom;
 
-        if (blockTop < triggerStart && blockTop > triggerEnd) {
-            let opacity = 1 - Math.abs(blockTop - viewportHeight / 2) / (viewportHeight * 0.3);
-            block.style.opacity = Math.max(0, Math.min(1, opacity));
-            block.style.transform = `translateY(${(1 - opacity) * 50}px)`;
-            animateLetterFlip(block);
+        // If the block is inside the English zone
+        if (blockTop < englishZoneBottom && blockBottom > englishZoneTop) {
+            // Flip to English and keep it
+            if (!block.dataset.isEnglish) {
+                flipToEnglish(block);
+            }
+            block.style.opacity = 1;
+            block.style.transform = `translateY(0px)`;
         } else {
-            block.style.opacity = 0;
-            scrambleLetters(block);
+            // Flip back to cryptic if not in zone
+            if (block.dataset.isEnglish) {
+                scrambleLetters(block);
+                block.dataset.isEnglish = "";
+            }
+            // Optional: you can keep fade-in/out if needed
+            block.style.opacity = 0.5;
+            block.style.transform = `translateY(30px)`;
         }
     });
+}
 
-});
+function flipToEnglish(element) {
+    element.classList.add("flipping");
+    setTimeout(() => {
+        const text = element.dataset.english || element.textContent;
+        element.dataset.english = text; // Store original text if not already
+        element.textContent = text;
+        element.dataset.isEnglish = "true"; // Mark it as English now
+        element.classList.remove("glowing");
+        element.classList.remove("flipping");
+    }, 300); // Duration should match your CSS transition
+}
 
-document.addEventListener("DOMContentLoaded", function () {
+// Letter Scramble Effect
+function scrambleLetters(element) {
+    element.classList.add("flipping");
+    setTimeout(() => {
+        const text = element.dataset.english || element.textContent;
+        element.dataset.english = text;
+        const scrambledText = text.split("").map(char =>
+            char === " " ? " " : alienChars[Math.floor(Math.random() * alienChars.length)]
+        ).join("");
+        element.textContent = scrambledText;
+        element.classList.add("glowing");
+        element.classList.remove("flipping");
+    }, 300); // Duration should match your CSS transition
+}
+
+
+// DOM Content Loaded Setup
+document.addEventListener("DOMContentLoaded", () => {
+    // Mobile Menu Setup
     const menuToggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
     const closeMenu = document.getElementById("close-menu");
@@ -53,8 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     menuToggle.addEventListener("click", () => {
         mobileMenu.classList.remove("translate-x-full");
-
-        // Animate menu items one by one
         menuItems.forEach((item, index) => {
             setTimeout(() => {
                 item.classList.remove("opacity-0", "translate-x-10");
@@ -63,84 +127,45 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function closeDrawer() {
-        // Hide menu items instantly
         menuItems.forEach((item) => {
             item.classList.add("opacity-0", "translate-x-10");
         });
-
         setTimeout(() => {
             mobileMenu.classList.add("translate-x-full");
         }, 300);
     }
 
     closeMenu.addEventListener("click", closeDrawer);
+
+    // Starfield Generation
     const starContainer = document.querySelector(".stars");
-
-    for (let i = 0; i < 200; i++) { // Number of stars
-        let star = document.createElement("div");
+    for (let i = 0; i < 200; i++) {
+        const star = document.createElement("div");
         star.classList.add("star");
-
-        // Random positions
-        let x = Math.random() * window.innerWidth;
-        let y = Math.random() * window.innerHeight;
-        let size = Math.random() * 3 + 1; // Random size
-
-        star.style.left = `${x}px`;
-        star.style.top = `${y}px`;
+        star.style.left = `${Math.random() * window.innerWidth}px`;
+        star.style.top = `${Math.random() * window.innerHeight}px`;
+        const size = Math.random() * 3 + 1;
         star.style.width = `${size}px`;
         star.style.height = `${size}px`;
-
-        // Random animation delay to make twinkling effect look natural
         star.style.animationDelay = `${Math.random() * 2}s`;
-
         starContainer.appendChild(star);
     }
 
+     // Scramble all text blocks initially
+     const textBlocks = document.querySelectorAll(".text-block");
+     textBlocks.forEach(block => {
+         scrambleLetters(block);
+     });
+
+    // Mini Ship Visibility Toggle
     const miniShip = document.getElementById("mini-ship");
-    const marsSection = document.querySelector(".mars-overdrive"); // Add class to section
+    const marsSection = document.querySelector(".mars-overdrive");
 
     function checkVisibility() {
         const sectionRect = marsSection.getBoundingClientRect();
-
-        if (sectionRect.bottom < window.innerHeight * 0.5) {
-            // 🚀 If scrolled past section, make the mini-ship visible
-            miniShip.style.opacity = "1";
-        } else {
-            // 🌑 Hide mini-ship when inside section
-            miniShip.style.opacity = "0";
-        }
+        miniShip.style.opacity = sectionRect.bottom < window.innerHeight * 0.5 ? "1" : "0";
     }
 
-    // Run function on scroll
     window.addEventListener("scroll", checkVisibility);
-
-    // Run once on load in case user starts below section
     checkVisibility();
 });
-
-function scrambleLetters(element) {
-    let text = element.dataset.english || element.textContent;
-    element.dataset.english = text; // Store original text if not stored
-    let scrambledText = text.split("").map(char => (char === " " ? " " : alienChars[Math.floor(Math.random() * alienChars.length)])).join("");
-    element.textContent = scrambledText;
-    element.classList.add("glowing"); // Add glow effect
-}
-
-function animateLetterFlip(element) {
-    let text = element.dataset.english;
-    let iterations = 7; // Reduce iterations for a faster flip
-    let interval = 100; // Increase delay for slower effect
-    let count = 0;
-
-    let flipInterval = setInterval(() => {
-        scrambleLetters(element);
-        count++;
-        if (count >= iterations) {
-            clearInterval(flipInterval);
-            setTimeout(() => {
-                element.textContent = text;
-                element.classList.remove("glowing"); // Remove glow after flip
-            }, 1000); // Keep English visible for 1 second
-        }
-    }, interval);
-}
