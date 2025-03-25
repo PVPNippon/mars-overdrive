@@ -81,31 +81,42 @@ function triggerEffects(scrollY) {
     });
 }
 
+const scrambleIntervals = new Map();
+
 function flipToEnglish(element) {
-    element.classList.add("flipping");
-    setTimeout(() => {
-        const text = element.dataset.english || element.textContent;
-        element.dataset.english = text; // Store original text if not already
-        element.textContent = text;
-        element.dataset.isEnglish = "true"; // Mark it as English now
-        element.classList.remove("glowing");
-        element.classList.remove("flipping");
-    }, 300); // Duration should match your CSS transition
+    const text = element.dataset.english || element.textContent;
+    element.dataset.english = text;
+
+    // Stop scrambling if running
+    if (scrambleIntervals.has(element)) {
+        clearInterval(scrambleIntervals.get(element));
+        scrambleIntervals.delete(element);
+    }
+
+    element.textContent = text;
+    element.dataset.isEnglish = "true";
+    element.classList.remove("glowing");
 }
 
 // Letter Scramble Effect
 function scrambleLetters(element) {
-    element.classList.add("flipping");
-    setTimeout(() => {
-        const text = element.dataset.english || element.textContent;
-        element.dataset.english = text;
+    const text = element.dataset.english || element.textContent;
+    element.dataset.english = text;
+
+    // If already scrambling, skip
+    if (scrambleIntervals.has(element)) return;
+
+    // Start continuous scrambling
+    const interval = setInterval(() => {
         const scrambledText = text.split("").map(char =>
             char === " " ? " " : alienChars[Math.floor(Math.random() * alienChars.length)]
         ).join("");
         element.textContent = scrambledText;
         element.classList.add("glowing");
-        element.classList.remove("flipping");
-    }, 300); // Duration should match your CSS transition
+    }, 100); // Scramble every 100ms
+
+    scrambleIntervals.set(element, interval);
+    element.dataset.isEnglish = "";
 }
 
 
